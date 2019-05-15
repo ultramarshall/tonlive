@@ -1,0 +1,1 @@
+Thanks Fot Registration<?php /**PATH /Users/marshall/Desktop/ton/public_html/Modules/RegistratioPartnernModule/Providers/../Resources/views/mail_vendor.blade.php ENDPATH**/ ?>
