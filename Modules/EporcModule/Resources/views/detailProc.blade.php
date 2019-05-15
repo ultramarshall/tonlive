@@ -68,9 +68,6 @@
                                       <li class="nav-item">
                                             <a class="nav-link" href="#">Jadwal Pengadaan</a>
                                           </li>
-                                {{-- <li class="nav-item">
-                                  <a class="nav-link disabled" href="#">Disabled</a>
-                                </li> --}}
                               </ul>
                 </div>
             </div>
@@ -80,12 +77,12 @@
                         <tbody>
                             <tr>
                                 <th class="bg-primary text-white" width="200">Kode Tender</th>
-                                <td colspan="3"><strong>6050119</strong></td>
+                                <td colspan="3"><strong>{{ $tender->id }}</strong></td>
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Nama Tender</th>
                                 <td colspan="3">
-                                    <strong>Pengadaan dan Pengembangan Aplikasi E-Audit </strong>
+                                    <strong>{{ $tender->tender_name }}</strong>
     
                                 </td>
                             </tr>
@@ -112,7 +109,7 @@
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Tanggal Pembuatan</th>
-                                <td colspan="3">16 April 2019</td>
+                                <td colspan="3">{{ $tender->create_date }}</td>
                             </tr>
     
                             <tr>
@@ -125,11 +122,11 @@
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Instansi</th>
-                                <td colspan="3"> Kementerian Perencanaan Pembangunan Nasional </td>
+                                <td colspan="3">{{ $tender->instansi }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Satuan Kerja</th>
-                                <td colspan="3">KANTOR MENTERI NEGARA PPN BAPPENAS</td>
+                                <td colspan="3">{{ $tender->satuan_kerja }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Kategori</th>
@@ -147,23 +144,23 @@
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Nilai Pagu Paket</th>
-                                <td>Rp 589.423.450,00</td>
+                                <td>Rp {{ number_format($tender->nilai_pagu_paket,0, ',' , '.') }}</td>
     
                                 <th class="bg-primary text-white">Nilai HPS Paket</th>
-                                <td>Rp 589.423.450,00</td>
+                                <td>Rp {{ number_format($tender->hps,0, ',' , '.') }}</td>
     
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white" rowspan="3">Jenis Kontrak</th>
                                 <th class="bg-primary text-white">Cara Pembayaran</th>
-                                <td colspan="2">Harga Satuan</td>
+                                <td colspan="2">{{ $tender->cara_pembayaran }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-primary text-white">Lokasi Pekerjaan</th>
                                 <td colspan="3">
                                     <ul>
     
-                                        <li>Jalan Taman Suropati No. 2, Jakarta Pusat 10310 - Jakarta Pusat (Kota)</li>
+                                        <li>{{ $tender->lokasi_pekerjaan }}</li>
     
                                     </ul>
                                 </td>

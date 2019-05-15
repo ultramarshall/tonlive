@@ -24,12 +24,19 @@ class EprocModel extends Model
     public static function tender_detail($id) {
         
         return DB::table('planning as a')
-                  ->join('schedule as b', 'a.id', '=', 'b.planning_id')
                   ->where('a.id', '=', $id)
                   ->first([
+                      'a.id',
                       'a.tender_name',
-                      'a.value as HPS',
-                      'b.date_schedule',
+                      'a.value',
+                      'a.instansi',
+                      'a.satuan_kerja',
+                      'a.nilai_pagu_paket',
+                      'a.value as hps',
+                      'a.cara_pembayaran',
+                      'a.lokasi_pekerjaan',
+                      'a.kualifikasi_usaha',
+                      'a.create_date',
                   ]);
 
     }
