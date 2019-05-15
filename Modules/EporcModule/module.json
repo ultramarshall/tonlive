@@ -1,0 +1,14 @@
+{
+    "name": "EporcModule",
+    "alias": "eporcmodule",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\EporcModule\\Providers\\EporcModuleServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

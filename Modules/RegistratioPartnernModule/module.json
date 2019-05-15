@@ -1,0 +1,14 @@
+{
+    "name": "RegistratioPartnernModule",
+    "alias": "registratiopartnernmodule",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\RegistratioPartnernModule\\Providers\\RegistratioPartnernModuleServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
