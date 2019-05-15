@@ -60,7 +60,7 @@
                                   <a class="nav-link active" href="#">perencanaan</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#">Peserta</a>
+                                  <a class="nav-link" href="">Peserta</a>
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link" href="#">Diskusi</a>
@@ -225,7 +225,7 @@
     
                             <tr>
                                 <th class="bg-primary text-white">Peserta Tender</th>
-                                <td colspan="3">38 peserta</td>
+                                <td colspan="3">{{ $tender->count_participants }}</td>
                             </tr>
                         </tbody>
                     </table>

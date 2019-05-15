@@ -21,8 +21,12 @@ class EporcModuleController extends Controller
         ];
         return view('eporcmodule::index', $data);
     }
-    public function participant()
+    public function participant(Request $request)
     {
+        $id = $request->segment('3');
+        $data  = [
+            'tender' => Eprocs::tender_detail($id) 
+        ];
         return view('eporcmodule::participant');
     }
 

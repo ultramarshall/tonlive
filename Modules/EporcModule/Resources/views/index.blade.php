@@ -91,17 +91,19 @@ $(document).ready( function () {
                             <tbody>
                                 
                                 @foreach($tender as $i => $t)
+                                    @if($t->tender_category_id == $c->id)
                                     <tr>
                                         <td>{{ $i+1 }}</td>
-                                        <td>{{ $t->tender_name }}</td>
+                                        <td width="50%">{{ $t->tender_name }}</td>
                                         <td>
                                             <div class="rupiah">{{number_format($t->value,0, ',' , '.') }}</div>
                                         </td>
-                                        <td>20-12-2019</td>
+                                        <td class="text-center">-</td>
                                         <td>
                                             <a  href="/eproc/detail-procurement/{{ $t->id }}" class="btn btn-primary btn-sm">Detail</a>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
 
                             </tbody>

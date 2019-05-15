@@ -17,7 +17,7 @@ class EporcDetailController extends Controller
     {
     	$id = $request->segment(3);
     	$data = [
-    		'tender' => Eprocs::tender_detail($id)
+    		'tender' => Eprocs::tender_detail($id)[0]
     	];
         return view('eporcmodule::detailProc', $data);
     }
