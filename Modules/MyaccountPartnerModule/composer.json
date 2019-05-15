@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/myaccountpartnermodule",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\MyaccountPartnerModule\\Providers\\MyaccountPartnerModuleServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\MyaccountPartnerModule\\": ""
+        }
+    }
+}

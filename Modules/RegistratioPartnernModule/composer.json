@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/registratiopartnernmodule",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\RegistratioPartnernModule\\Providers\\RegistratioPartnernModuleServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\RegistratioPartnernModule\\": ""
+        }
+    }
+}
