@@ -1,1 +1,0 @@
-halo <?php echo e($keyword); ?><?php /**PATH /Users/marshall/Desktop/ton/public_html/Modules/AuthModules/Providers/../Resources/views/test.blade.php ENDPATH**/ ?>

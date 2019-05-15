@@ -1,1 +1,0 @@
-<?php echo e($title); ?><?php /**PATH /Users/marshall/Desktop/ton/public_html/Modules/ContactModule/Providers/../Resources/views/email.blade.php ENDPATH**/ ?>

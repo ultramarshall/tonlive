@@ -1,1 +1,0 @@
-asdas<?php /**PATH /Users/marshall/Desktop/ton/public_html/Modules/RegistratioPartnernModule/Providers/../Resources/views/email/vendor.blade.php ENDPATH**/ ?>
