@@ -147,9 +147,6 @@
                                 <li class="nav-item" onclick="get_view('pajak')">
                                     <a class="nav-link" data-toggle="tab" href="#tab-view">Pajak</a>
                                 </li>
-                                <li class="nav-item" onclick="get_view('siKap')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Integrasi SiKap</a>
-                                </li>
                             </ul>
 
                             <div class="tab-content p-4" >

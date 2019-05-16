@@ -29,7 +29,7 @@ class Doi
     }
 
     static function login($email, $password) {
-
+        // dd(Crypt::encryptString($password)); eyJpdiI6IldpVWhxeUhhSUpZWmJlenRWWm5Qanc9PSIsInZhbHVlIjoiR2dTT0NwOGxoQ0pcL0tWTkt0OU42bXc9PSIsIm1hYyI6IjIzYmNlZGUwMDFkYWY1NGYyZTA2YjNmN2VkMmM1Yjg0MDMxY2RiYmI5YTNlMzYzMzZiNjY1ODA3ZDI3MmQzZjUifQ==
         $user = DB::table('user_vendor')->where('email' , $email)->first();
         if( Crypt::decryptString($user->password) == $password ) {
             session(['authentication_user' => $user]);

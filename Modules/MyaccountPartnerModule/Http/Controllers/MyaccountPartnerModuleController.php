@@ -55,6 +55,10 @@ class MyaccountPartnerModuleController extends Controller
                 return view('myaccountpartnermodule::pages.akta');
                 break;
             
+            case 'pemilik':
+                return view('myaccountpartnermodule::pages.pemilik');
+                break;
+            
             default:
                 return "<section class='py-8 text-center'>
                           <h5 class'm-0'=>///////////////////</h5>
