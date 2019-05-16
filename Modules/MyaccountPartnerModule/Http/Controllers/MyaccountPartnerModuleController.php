@@ -62,6 +62,10 @@ class MyaccountPartnerModuleController extends Controller
             case 'peralatan':
                 return view('myaccountpartnermodule::pages.peralatan');
                 break;
+
+            case 'pengalaman':
+                return view('myaccountpartnermodule::pages.pengalaman');
+                break;
             
             default:
                 return "<section class='py-8 text-center'>
