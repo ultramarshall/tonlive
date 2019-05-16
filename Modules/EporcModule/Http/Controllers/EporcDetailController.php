@@ -25,13 +25,12 @@ class EporcDetailController extends Controller
         switch ($request->pages) {
 
             case 'perencanaan':
-                $data = [
-                    'tender' => Eprocs::tender_detail($id)[0]
-                ];
+                $data = ['tender' => Eprocs::tender_detail($id)[0]];
                 return view('eporcmodule::pages.perencanaan', $data);
                 break;
             case 'peserta':
-                return view('eporcmodule::pages.peserta');
+                $data = ['peserta' => Eprocs::peserta_tender($id)];
+                return view('eporcmodule::pages.peserta', $data);
                 break;
             case 'diskusi':
                 return view('eporcmodule::pages.diskusi');

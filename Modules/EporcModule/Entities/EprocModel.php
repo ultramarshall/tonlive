@@ -22,26 +22,6 @@ class EprocModel extends Model
 	}
 
     public static function tender_detail($id) {
-        
-        /*return DB::table('planning as a')
-                  ->select(
-                    DB::raw('select count(*) from merging_vendor_project'),
-                      'a.id',
-                      'a.tender_name',
-                      'a.value',
-                      'a.instansi',
-                      'a.satuan_kerja',
-                      'a.nilai_pagu_paket',
-                      'a.value as hps',
-                      'a.cara_pembayaran',
-                      'a.lokasi_pekerjaan',
-                      'a.kualifikasi_usaha',
-                      'a.create_date',
-                      'a.tender_category_id'
-                  )
-                  ->where('a.id', '=', $id)
-                  ->get();*/
-       
         return DB::select('SELECT a.tender_name,
                                   a.id,
                                   a.tender_name,
@@ -59,9 +39,14 @@ class EprocModel extends Model
 
     }
 
-	public static function classifications() {
-		
-		return DB::table('tender_category')->get();
+    public static function classifications() {
+        return DB::table('tender_category')->get();
+    }
+
+	public static function peserta_tender($id) {
+		return DB::table('merging_vendor_project')
+                ->where('planning_id', '=', $id)
+                ->get();
 
 	}
 }

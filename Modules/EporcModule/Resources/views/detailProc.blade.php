@@ -78,6 +78,7 @@
 @endsection
 
 @section('footjs')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
 <script>
     $(document).ready(function(){
         $.ajaxSetup({
@@ -90,7 +91,7 @@
     });
     function get_view(pages) {
         console.log(pages)
-        pages = (pages=='undifined')?pages:'perencanaan'
+        pages = (pages=='undifined')?'perencanaan':pages;
         localStorage.setItem('pages-eproc', pages);
         $('.nav-link').removeClass('active show')
         $('.nav-'+pages).addClass('active show')
@@ -102,7 +103,7 @@
             data: {id: {{ Request::segment(3) }}, pages: pages},
             beforeSend: function() {
                 $('#tab-view').html('');
-               /* $('#tab-view').block({
+                $('#tab-view').block({
                     message: '<img src="{{URL::asset("images/loader.svg")}}" style="width:100px; margin-left: -50px; margin-top: -50px"/>',
                     overlayCSS: {
                         backgroundColor: '#fff',
@@ -114,11 +115,12 @@
                         padding: 0,
                         backgroundColor: 'none'
                     }
-                });*/
+                });
                 
             },
             success: function(response) {
                 $('#tab-view').html(response);
+                console.log(response);
             },
             error: function(response) {
             }
