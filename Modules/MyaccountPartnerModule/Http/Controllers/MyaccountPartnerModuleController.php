@@ -66,11 +66,14 @@ class MyaccountPartnerModuleController extends Controller
             case 'pengalaman':
                 return view('myaccountpartnermodule::pages.pengalaman');
                 break;
+
+            case 'pajak':
+                return view('myaccountpartnermodule::pages.pajak');
+                break;
             
             default:
                 return "<section class='py-8 text-center'>
-                          <h5 class'm-0'=>///////////////////</h5>
-                          <h1 class=>() -______- ()</h1>
+                          <h1 class=>404</h1>
                           <h5 class=>page not found</h5>
                         </section>";
                 break;

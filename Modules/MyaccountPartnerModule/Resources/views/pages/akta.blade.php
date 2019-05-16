@@ -4,42 +4,42 @@
     <div class="col-md-12 float-left border-bottom">
         <h6>Akta Pendirian</h6>
         <form action="post" action="">
-            <div class="form-group">
-                <label class="text-right col-4">Nomor <sup class="text-danger">*</sup></label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Nomor <sup class="text-danger">*</sup></label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Tanggal Surat</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Tanggal Surat</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Notaris</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Notaris</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Dokumen</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Dokumen</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
         </form>
     </div>
     <div class="col-md-12 float-left border-bottom">
         <h6>Akta Perubahan Terakhir</h6>
         <form action="post" action="">
-            <div class="form-group">
-                <label class="text-right col-4">Nomor <sup class="text-danger">*</sup></label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Nomor <sup class="text-danger">*</sup></label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Tanggal Surat</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Tanggal Surat</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Notaris</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Notaris</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
-            <div class="form-group">
-                <label class="text-right col-4">Dokumen</label>
-                <input type="text" class="form-control form-control-sm col-8 float-right" name="id" id="id">
+            <div class="form-group row">
+                <label class="text-right col-3 float-left">Dokumen</label>
+                <input type="text" class="form-control form-control-sm col-6 float-left" name="id" id="id">
             </div>
         </form>
     </div>
