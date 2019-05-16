@@ -52,7 +52,7 @@ class EprocModel extends Model
                                   a.value as hps,
                                   a.cara_pembayaran,
                                   a.lokasi_pekerjaan,
-                                  a.kualifikasi_usaha,
+                                  a.qualification_terms,
                                   a.create_date,
                                   (SELECT COUNT(id) FROM merging_vendor_project WHERE planning_id=a.id) as count_participants
                            FROM planning as a WHERE a.id=?',[$id]);

@@ -15,4 +15,5 @@ Route::prefix('eproc')->group(function() {
     Route::get('/list-procurement', 'EporcModuleController@index');
     Route::get('/detail-procurement/{procno}', 'EporcDetailController@index');
     Route::get('/participant/{procno}', 'EporcModuleController@participant');
+    Route::post('/pages', 'EporcDetailController@get_pages');
 });

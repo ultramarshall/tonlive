@@ -121,31 +121,31 @@
                         <div class="col-md-12">
                             <ul class="nav nav-tabs-sm nav-tabs nav-custom" role="tablist">
                                 <li class="nav-item" onclick="get_view('identitas')">
-                                    <a class="nav-link active" data-toggle="tab" href="#tab-view">Identitas Perusahaan</a>
+                                    <a class="nav-link nav-identitas" data-toggle="tab" href="#tab-view">Identitas Perusahaan</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('izin')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Izin Usaha</a>
+                                    <a class="nav-link nav-izin" data-toggle="tab" href="#tab-view">Izin Usaha</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('akta')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Akta</a>
+                                    <a class="nav-link nav-akta" data-toggle="tab" href="#tab-view">Akta</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('pemilik')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Pemilik</a>
+                                    <a class="nav-link nav-pemilik" data-toggle="tab" href="#tab-view">Pemilik</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('pengurus')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Pengurus</a>
+                                    <a class="nav-link nav-pengurus" data-toggle="tab" href="#tab-view">Pengurus</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('tenaga-ahli')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Tenaga Ahli</a>
+                                    <a class="nav-link nav-tenaga-ahli" data-toggle="tab" href="#tab-view">Tenaga Ahli</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('peralatan')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Peralatan</a>
+                                    <a class="nav-link nav-peralatan" data-toggle="tab" href="#tab-view">Peralatan</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('pengalaman')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Pengalaman</a>
+                                    <a class="nav-link nav-pengalaman" data-toggle="tab" href="#tab-view">Pengalaman</a>
                                 </li>
                                 <li class="nav-item" onclick="get_view('pajak')">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-view">Pajak</a>
+                                    <a class="nav-link nav-pajak" data-toggle="tab" href="#tab-view">Pajak</a>
                                 </li>
                             </ul>
 
@@ -193,8 +193,8 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
         });
-        
-        get_view('identitas');
+        active_pages = localStorage.getItem('pages')
+        get_view(active_pages);
 
         var x = window.matchMedia("(max-width: 992px)")
         myFunction(x)
@@ -202,6 +202,9 @@
 
     });
     function get_view(pages) {
+        localStorage.setItem('pages', pages);
+        $('.nav-link').removeClass('active show')
+        $('.nav-'+pages).addClass('active show')
         $.ajax({
             type: 'POST',
             url: "/partner/pages",

@@ -96,7 +96,8 @@ $(document).ready( function () {
                                         <td>{{ $i+1 }}</td>
                                         <td width="50%">{{ $t->tender_name }}</td>
                                         <td>
-                                            <div class="rupiah">{{number_format($t->value,0, ',' , '.') }}</div>
+                                            <div class="rupiah">{{$t->value}}</div>
+                                            {{-- <div class="rupiah">{{number_format($t->value,0, ',' , '.') }}</div> --}}
                                         </td>
                                         <td class="text-center">-</td>
                                         <td>
