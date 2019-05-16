@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
-        <table class="table table-bordered table-striped">
-            <tbody class="bg-gradient-secondary">
+        <table class="table table-bordered table-striped shadow-sm">
+            <tbody>
                 <tr>
                     <th class="bg-primary text-white" width="200">Kode Tender</th>
                     <td colspan="3"><strong>{{ $tender->id }}</strong></td>
@@ -22,13 +22,11 @@
                                     <th width="80">Kode RUP</th>
                                     <th>Nama Paket</th>
                                     <th width="200">Sumber Dana</th>
-                                    <th></th>
                                 </tr>
                                 <tr>
-                                    <td>21411308</td>
-                                    <td>Pengadaan dan Pengembangan Aplikasi E-Audit</td>
-                                    <td>APBN</td>
-                                    <td></td>
+                                    <td>{{ $tender->kode_rup }}</td>
+                                    <td>{{ $tender->nama_paket }}</td>
+                                    <td>{{ $tender->sumber_dana }}</td>
                                 </tr>
                             </tbody>
                         </table>

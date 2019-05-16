@@ -30,6 +30,7 @@ class EporcDetailController extends Controller
                 break;
             case 'peserta':
                 $data = ['peserta' => Eprocs::peserta_tender($id)];
+                // dd($data);
                 return view('eporcmodule::pages.peserta', $data);
                 break;
             case 'diskusi':
