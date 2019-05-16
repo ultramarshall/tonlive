@@ -1,60 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-<style>
-    .nav-custom {
-        overflow-y: hidden;
-        display: -webkit-box;
-    }
-    .nav-custom .nav-link.active {
-        background-color: #f1f2f3;
-        -webkit-box-shadow: 0 0 26px rgba(0, 0, 0, 0.06);
-        box-shadow: 0 0 26px rgba(0, 0, 0, 0.06);
-    }
-    /* Extra small devices (portrait phones, less than 576px)*/
-    @media (max-width: 575.98px) {
-        .col-left {
-            display: none;
-        }
-        .col-right {
-            min-width: 100%
-        }
-    }
 
-    /* Small devices (landscape phones, 576px and up)*/
-    @media (min-width: 576px) and (max-width: 767.98px) {
-        .col-left {
-            display: none;
-        }
-        .col-right {
-            min-width: 100%
-        }
-    }
-
-    /* Medium devices (tablets, 768px and up)*/
-    @media (min-width: 768px) and (max-width: 991.98px) {
-        .col-left {
-            display: none;
-        }
-        .col-right {
-            min-width: 100%
-        }
-    }
-
-    /* Large devices (desktops, 992px and up)*/
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-        .col-left {
-
-        }
-    }
-
-    /* Extra large devices (large desktops, 1200px and up)*/
-    @media (min-width: 1200px) {
-        .col-left {
-
-        }
-    }
-</style>
 <section class="section bg-gray py-0">
     <div class="container-fluid">
         <div class="row">
@@ -163,9 +110,72 @@
 </section>
 @stop
 
-@section('footjs')
+@section('head')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<style>
+    .select2 {
+        border: 1px solid #eaeff4;
+    }
+    .nav-custom {
+        overflow-y: hidden;
+        display: -webkit-box;
+    }
+    .nav-custom .nav-link.active {
+        background-color: #f1f2f3;
+        -webkit-box-shadow: 0 0 26px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 0 26px rgba(0, 0, 0, 0.06);
+    }
+    /* Extra small devices (portrait phones, less than 576px)*/
+    @media (max-width: 575.98px) {
+        .col-left {
+            display: none;
+        }
+        .col-right {
+            min-width: 100%
+        }
+    }
+
+    /* Small devices (landscape phones, 576px and up)*/
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        .col-left {
+            display: none;
+        }
+        .col-right {
+            min-width: 100%
+        }
+    }
+
+    /* Medium devices (tablets, 768px and up)*/
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .col-left {
+            display: none;
+        }
+        .col-right {
+            min-width: 100%
+        }
+    }
+
+    /* Large devices (desktops, 992px and up)*/
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        .col-left {
+
+        }
+    }
+
+    /* Extra large devices (large desktops, 1200px and up)*/
+    @media (min-width: 1200px) {
+        .col-left {
+
+        }
+    }
+</style>
+@endsection
+
+
+@section('footjs')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -183,9 +193,6 @@
         }
     }
 
-        
-    
-
     $(document).ready(function(){
 
         $.ajaxSetup({
@@ -201,7 +208,44 @@
         x.addListener(myFunction)
 
     });
+
+    $(document).on('submit', '#form', function(e){
+        e.preventDefault();
+        
+        var url = e.currentTarget.action;
+        var data = $(this).serializeArray();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            beforeSend: function() {
+                $('#tab-view').block({
+                    message: '<img src="{{URL::asset("images/loader.svg")}}" style="width:100px; margin-left: -50px; margin-top: -50px"/>',
+                    overlayCSS: {
+                        backgroundColor: '#fff',
+                        opacity: 0.2,
+                        cursor: 'wait',
+                    },
+                    css: {
+                        border: 0,
+                        padding: 0,
+                        backgroundColor: 'none'
+                    }
+                });
+            },
+            success: function(response) {
+                console.log(response)
+                $('.nav-link.active').trigger('click')
+                if (response)
+                    $('#tab-view').unblock()
+            },
+            error: function(response) {
+                console.log(response)
+            }
+        });
+    });
     function get_view(pages) {
+        pages = (pages=='undefined')?'identitas':pages;
         localStorage.setItem('pages', pages);
         $('.nav-link').removeClass('active show')
         $('.nav-'+pages).addClass('active show')
@@ -228,7 +272,6 @@
             },
             success: function(response) {
                 $('#tab-view').html(response);
-                console.log(response)
             },
             error: function(response) {
                 console.log(response)

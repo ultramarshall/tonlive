@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\AuthModules\Http\Middleware\Doi;
+use MyAccounts;
 use DB;
+
 
 class MyaccountPartnerModuleController extends Controller
 {
@@ -25,13 +27,11 @@ class MyaccountPartnerModuleController extends Controller
 
         switch ($request->pages) {
             case 'identitas':
-                $data['vendor'] = DB::table('user_vendor as a')
-                                 ->join('bussiness_type as b', 'b.id', '=', 'a.bussiness_type_id')
-                                 ->where('a.id',  Doi::info()->id)->first([
-                                    'a.id as id',
-                                    'a.id as id',
-                                 ]);
-
+                $data = [
+                    'vendor' => MyAccounts::get_identitas(),
+                    'provinces' => \App\Model\Province::all(),
+                    'company_type' => MyAccounts::company_type(),
+                ];
                 return view('myaccountpartnermodule::pages.identitas', $data);
                 break;
             
@@ -40,7 +40,10 @@ class MyaccountPartnerModuleController extends Controller
                 break;
             
             case 'akta':
-                return view('myaccountpartnermodule::pages.akta');
+                $data = [ 
+                    'akta' => MyAccounts::get_akta() 
+                ];
+                return view('myaccountpartnermodule::pages.akta', $data);
                 break;
             
             case 'pengurus':
@@ -51,16 +54,18 @@ class MyaccountPartnerModuleController extends Controller
                 return view('myaccountpartnermodule::pages.tenaga-ahli');
                 break;
             
-            case 'akta':
-                return view('myaccountpartnermodule::pages.akta');
-                break;
-            
             case 'pemilik':
-                return view('myaccountpartnermodule::pages.pemilik');
+                $data = [ 
+                    'pemilik' => MyAccounts::get_pemilik() 
+                ];
+                return view('myaccountpartnermodule::pages.pemilik', $data);
                 break;
 
             case 'peralatan':
-                return view('myaccountpartnermodule::pages.peralatan');
+                $data = [
+                    'peralatan' => MyAccounts::get_peralatan()
+                ];
+                return view('myaccountpartnermodule::pages.peralatan', $data);
                 break;
 
             case 'pengalaman':
@@ -78,6 +83,22 @@ class MyaccountPartnerModuleController extends Controller
                         </section>";
                 break;
         }
+    }
+
+    public  function set_identity(Request $request) {
+        return MyAccounts::set_identitas($request);
+    }
+
+    public  function set_akta(Request $request) {
+        return MyAccounts::set_akta($request);
+    }
+
+    public  function set_pemilik(Request $request) {
+        return MyAccounts::set_pemilik($request);
+    }
+
+    public  function set_peralatan(Request $request) {
+        return MyAccounts::set_peralatan($request);
     }
 
 }

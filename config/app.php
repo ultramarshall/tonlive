@@ -231,6 +231,7 @@ return [
 
         // module entities
         'Eprocs' => Modules\EporcModule\Entities\EprocModel::class,
+        'MyAccounts' => Modules\MyaccountPartnerModule\Entities\Myaccount::class,
     ],
 
 ];

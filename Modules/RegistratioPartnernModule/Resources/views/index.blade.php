@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Kabupaten</label>
+                                <label>Kabupaten / Kota</label>
                                 <select class="form-control form-control-sm select2" name="regencies" id="regencies" disabled></select>
                             </div>
                             <div class="form-group">

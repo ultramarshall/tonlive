@@ -11,7 +11,7 @@
                     @foreach($peserta as $i => $p)
                     <tr>
                         <td>{{ $i+1 }}</td>
-                        <td nowrap=""> {{ $p->type_vendor . '. ' . $p->company_name }} </td>
+                        <td nowrap=""> {{ $p->company_name }} </td>
                     </tr>
                     @endforeach
                 </tbody>
