@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <header class="header py-8 text-center text-white bg-dark pb-2">
-        <canvas class="constellation" width="1680" height="920"></canvas>
+        {{-- <canvas class="constellation" width="1680" height="920"></canvas> --}}
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mx-auto">

@@ -48,6 +48,18 @@ class EprocModel extends Model
         return DB::table('tender_category')->get();
     }
 
+    public static function get_discuss($id) {
+        return DB::table('discussion as a')
+                ->join('user_vendor as b', 'a.user_vendor_id', '=', 'b.id')
+                ->where('planning_id', $id)
+                ->get([
+                  'a.id',
+                  'a.create_date',
+                  'a.comment',
+                  'b.company_name',
+                ]);
+    }
+
 	public static function peserta_tender($id) {
 		return DB::table('merging_vendor_project as a')
                 ->join('user_vendor as b', 'a.user_vendor_id', '=', 'b.id')
