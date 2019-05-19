@@ -31,5 +31,9 @@ Route::prefix('/partner')->group(function() {
 
 	    Route::post('/save-pengurus', 'MyaccountPartnerModuleController@set_pengurus');
 	    Route::post('/update-pengurus', 'MyaccountPartnerModuleController@update_pengurus');
+
+
+	    Route::post('/save-izin', 'MyaccountPartnerModuleController@set_izin');
+	    Route::post('/update-izin', 'MyaccountPartnerModuleController@update_izin');
 	});
 });

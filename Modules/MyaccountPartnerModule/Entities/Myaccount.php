@@ -218,4 +218,37 @@ class Myaccount extends Model
         return DB::table('user_vendor')->where('id', User::info('id'))->update(['pengurus'=>json_encode($assets)]);
 	}
 
+	public static function get_izin() {
+		$result = DB::table('user_vendor')->where('id', User::info('id'))->first(['izin']);
+		return json_decode($result->izin);
+	}
+	public static function set_izin($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+		$new_asset = [
+			"izin_usaha" => $data->izin_usaha,
+			"no_surat" => $data->no_surat,
+			"berlaku_sampai" => $data->berlaku_sampai,
+			"instansi" => $data->instansi,
+			"kualifikasi" => $data->kualifikasi,
+        ];
+        array_push($assets, (object)$new_asset);
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['izin'=>json_encode($assets)]);
+	}
+	public static function edit_izin($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['izin'=>json_encode($assets)]);
+	}
+
 }

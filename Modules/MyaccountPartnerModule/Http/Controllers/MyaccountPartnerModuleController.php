@@ -35,7 +35,8 @@ class MyaccountPartnerModuleController extends Controller
                 break;
             
             case 'izin':
-                return view('myaccountpartnermodule::pages.izin');
+                $data['izin'] = MyAccounts::get_izin();
+                return view('myaccountpartnermodule::pages.izin', $data);
                 break;
             
             case 'akta':
@@ -119,6 +120,14 @@ class MyaccountPartnerModuleController extends Controller
     }
     public  function update_pengurus(Request $request) {
         return MyAccounts::edit_pengurus($request);
+    }
+
+
+    public  function set_izin(Request $request) {
+        return MyAccounts::set_izin($request);
+    }
+    public  function update_izin(Request $request) {
+        return MyAccounts::edit_izin($request);
     }
 
 }
