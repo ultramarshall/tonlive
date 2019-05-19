@@ -211,11 +211,13 @@
 
     $(document).on('click', '#btn-save', function(){
         var url = $('#form').attr('action');
-        var data = $('#form').serializeArray();
+        var data = new FormData(document.getElementById('form'));
         $.ajax({
             type: 'POST',
             url: url,
             data: data,
+            contentType: false,
+            processData: false,
             beforeSend: function() {
                 $('#tab-view').block({
                     message: '<img src="{{URL::asset("images/loader.svg")}}" style="width:100px; margin-left: -50px; margin-top: -50px"/>',
@@ -235,10 +237,16 @@
                 // $('.nav-link.active').trigger('click')
                 if (response)
                     $('#tab-view').unblock()
-                console.log(data)
+
+                if(response.error) {
+                    $('#form').prepend('<div class="alert alert-sm alert-warning alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+                    jQuery.each(response.error, function(key, value){
+                        $('.alert-warning').append('<p class="mb-0">'+value+'</p>');
+                    });
+                }
             },
             error: function(response) {
-                console.log(response)
+                // console.log(response)
             }
         });
     })

@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\AuthModules\Http\Middleware\Doi;
 use MyAccounts;
+use Validator;
 use DB;
 
 
@@ -87,7 +88,18 @@ class MyaccountPartnerModuleController extends Controller
     }
 
     public  function set_akta(Request $request) {
-        return MyAccounts::set_akta($request);
+        $validator = Validator::make($request->all(), [
+            'acta_document' => 'required|mimes:pdf|max:2048',
+        ]);
+        if ($validator->passes()) {
+            $input = $request->all();
+            $input['acta_document'] = time().'.'.$request->acta_document->getClientOriginalExtension();
+            $request->acta_document->move(public_path('document'), $input['acta_document']);
+            return response()->json(['success'=>'Berhasil']);
+        }
+
+        return response()->json(['error'=>$validator->errors()->all()]);
+        // return MyAccounts::set_akta($request);
     }
 
     public  function set_pemilik(Request $request) {
