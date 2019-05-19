@@ -1,49 +1,34 @@
 <!--  start -->
 <div class="row ">
 
-    <div class="col-md-12 float-left border-bottom form-pengalaman " style="display: none">
-        <form class="col-md-12 bg-gradient-secondary pt-4 pb-1 mb-2" method="POST" action="/partner/save-pengalaman" id="form" data-id>
+    <div class="col-md-12 float-left border-bottom form-tenaga-ahli " style="display: none">
+        <form class="col-md-12 bg-gradient-secondary pt-4 pb-1 mb-2" method="POST" action="/partner/save-peralatan" id="form" data-id>
             <div class="row">
                 <div class="col-12">
                     
-                    <div class="col-6 float-left">
+                        
                         <div class="form-group row">
-                            <label class="float-left col-4">Pekerjaan<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="pekerjaan" id="pekerjaan">
+                            <label class="float-left col-4 text-right">Nama<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control form-control-sm col-6 float-left" name="nama" id="nama">
                         </div>
                         <div class="form-group row">
-                            <label class="float-left col-4">Lokasi <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="lokasi" id="lokasi">
+                            <label class="float-left col-4 text-right">Tanggal Lahir <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control form-control-sm col-6 float-left" name="tgl_lahir" id="tgl_lahir">
                         </div>
                         <div class="form-group row">
-                            <label class="float-left col-4">Instansi <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="instansi" id="instansi">
+                            <label class="float-left col-4 text-right">Pendidikan <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control form-control-sm col-6 float-left" name="pendidikan" id="pendidikan">
                         </div>
                         <div class="form-group row">
-                            <label class="float-left col-4">Alamat <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="alamat" id="alamat">
+                            <label class="float-left col-4 text-right">Pengalaman (Tahun) <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control form-control-sm col-6 float-left" name="pengalaman" id="pengalaman">
+                        </div>
+                        <div class="form-group row">
+                            <label class="float-left col-4 text-right">Profesi / Keahlian <sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control form-control-sm col-6 float-left" name="keahlian" id="keahlian">
                         </div>
 
-                    </div>
-
-                    <div class="col-6 float-left">
-                        <div class="form-group row">
-                            <label class="float-left col-4">Mulai Kontrak <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="tanggal_kontrak" id="tanggal_kontrak">
-                        </div>
-                        <div class="form-group row">
-                            <label class="float-left col-5">Selesai Kontrak <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="selesai_kontrak" id="selesai_kontrak">
-                        </div>
-                        <div class="form-group row">
-                            <label class="float-left col-5">Nilai Kontrak <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="nilai_kontrak" id="nilai_kontrak">
-                        </div>
-                        <div class="form-group row">
-                            <label class="float-left col-5">Jenis Kontrak <sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control form-control-sm col-7 float-left" name="jenis_kontrak" id="jenis_kontrak">
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="row">
@@ -53,7 +38,7 @@
                 </div>
             </div>
 
-            <textarea name="old_data" cols="30" rows="10" class="col-12 fs-9 d-none" id="old_data">{{ (json_encode($pengalaman)=='null')?'':json_encode($pengalaman) }}</textarea>
+            <textarea name="old_data" cols="30" rows="10" class="col-12 fs-9 d-none" id="old_data">{{ (json_encode($tenaga_ahli)=='null')?'':json_encode($tenaga_ahli) }}</textarea>
         </form>
     </div>
     
@@ -64,7 +49,6 @@
         <button class="btn btn-xs rounded-sm bg-gradient-danger text-white" id="delete">delete</button>
     </div>
 </div>
-
 <div class="row">
     <div class="w-100" style="overflow-y: auto !important;">
         <table id="example" class="table table-sm table-striped table-bordered w-100">
@@ -73,27 +57,27 @@
                     <th class="text-center" width="50px">
                         <input name="check[]" id="check_all" class=" my-auto p-0" type="checkbox" style="margin-left: 15px">
                     </th>
-                    <th class="w-100px">Nama Pekerjaan</th>
-                    <th>Lokasi</th>
-                    <th>Instansi</th>
-                    <th>Mulai Kontrak</th>
-                    <th>Selesai Kontrak</th>
+                    <th class="w-100px">Nama</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Pendidikan</th>
+                    <th>Pengalaman (Tahun)</th>
+                    <th>Profesi / Keahlian</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @isset ($pengalaman)
-                    @foreach($pengalaman as $i => $p)
+                @isset ($tenaga_ahli)
+                    @foreach($tenaga_ahli as $i => $ta)
                         <tr row="{{ $i }}">
 
                             <td class="text-center">
                                 <input name="check[]" id="check" class="mx-auto my-auto p-0" type="checkbox">
                             </td>
-                            <td>{{ $p->pekerjaan }}</td>
-                            <td>{{ $p->lokasi }}</td>
-                            <td>{{ $p->instansi }}</td>
-                            <td>{{ $p->tanggal_kontrak }}</td>
-                            <td>{{ $p->selesai_kontrak }}</td>
+                            <td>{{ $ta->nama }}</td>
+                            <td class="text-center" width="50">{{ $ta->tgl_lahir }}</td>
+                            <td>{{ $ta->pendidikan }}</td>
+                            <td>{{ $ta->pengalaman }}</td>
+                            <td>{{ $ta->keahlian }}</td>
                             <td>
                                 <button class="btn btn-xs bg-gradient-primary text-white" id="edit" data-id="{{ $i }}">edit</button>
                             </td>
@@ -106,14 +90,15 @@
                     <th class="text-center" width="50px">
                         <input name="check[]" id="check_all" class=" my-auto p-0" type="checkbox">
                     </th>
-                    <th class="w-100px">Nama Pekerjaan</th>
-                    <th>Lokasi</th>
-                    <th>Instansi</th>
-                    <th>Mulai Kontrak</th>
-                    <th>Selesai Kontrak</th>
+                    <th class="w-100px">Nama</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Pendidikan</th>
+                    <th>Pengalaman (Tahun)</th>
+                    <th>Profesi / Keahlian</th>
                     <th>Action</th>
                 </tr>
-            </tfoot></table>
+            </tfoot>
+        </table>
     </div>
 </div>
 <script>
@@ -127,12 +112,12 @@
             $('input[type=checkbox]').prop('checked', false)
     })
     $(document).on('click', '#add', function(){
-        $('form').attr('action', '/partner/save-pengalaman')
-        $('.form-pengalaman').fadeIn()
+        $('form').attr('action', '/partner/save-tenaga-ahli')
+        $('.form-tenaga-ahli').fadeIn()
     })
     $(document).on('click', '#edit', function(){
-        form = $('.form-pengalaman');
-        $('form').attr('action', '/partner/update-pengalaman')
+        form = $('.form-tenaga-ahli');
+        $('form').attr('action', '/partner/update-tenaga-ahli')
         id = $(this).attr('data-id');
         old_data = JSON.parse($('#old_data').val())[id];
         form.fadeOut();
@@ -144,10 +129,10 @@
         e.preventDefault();
         $('form').attr('action', '#')
         $('#form').attr('data-id', '');
-        $('.form-pengalaman').fadeOut()
+        $('.form-tenaga-ahli').fadeOut()
     })
 
-    $('#form').on('change paste', 'input, select, textarea', function(e){
+    $('#form').on('change paste click', 'input, select, textarea', function(e){
         var form = $('#form');
         var table = $('#example')
         var id = parseInt(form.attr('data-id'));

@@ -7,12 +7,10 @@
             </div>
             <div class="form-group">
                 <label>Bentuk Usaha</label>
-                {{-- <input type="text" class="form-control form-control-sm" name="company_type" id="company_type" value="{{$vendor->company_type}}"> --}}
                 <select class="form-control form-control-sm select2" name="company_type" id="company_type">
                     @foreach($company_type as $i) 
-                       
-                    <option value="{{$i->id}}" {{ ($vendor->company_type == $i->id)?'':'selected' }}>
-                        <span class="text-uppercase" value="{{ $i->id }}">{{ strtoupper($i->name) }}</span>
+                    <option value="{{$i->id}}" {{ ($vendor->company_type != $i->id)?'':'selected' }}>
+                        <span class="text-uppercase">{{ strtoupper($i->name) }}</span>
                     </option>
                     @endforeach
                 </select>
@@ -27,7 +25,6 @@
             </div>
             <div class="form-group">
                 <label>Alamat</label>
-                {{-- <input type="text" class="form-control form-control-sm" name="address" id="address" value="{{$vendor->address}}"> --}}
                 <textarea class="form-control form-control-sm" name="address" id="address" cols="30" rows="4">{{$vendor->address}}</textarea>
             </div>
             <div class="form-group">
@@ -97,7 +94,7 @@
 </div>
 <div class="row">
     <div class="col-12 d-flex">
-        <button type="submit" form="form" class="btn bg-gradient-primary btn-round text-white mx-auto">SAVE</button>
+        <button type="submit" form="form" id="btn-save" class="btn bg-gradient-primary btn-round text-white mx-auto">SAVE</button>
     </div>
 </div>
 <script>

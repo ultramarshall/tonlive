@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <textarea name="old_data" cols="30" rows="10" class="col-12 fs-9 d-none" id="old_data">{{ (json_encode($peralatan)=='null')?'':json_encode($peralatan) }}</textarea>
+            <textarea name="old_data" cols="30" rows="10" class="col-12 fs-9 d-none" id="old_data">{{-- {{ (json_encode($peralatan)=='null')?'':json_encode($peralatan) }} --}}</textarea>
         </form>
     </div>
     
@@ -87,24 +87,22 @@
                 </tr>
             </thead>
             <tbody>
-                @isset ($peralatan)
-                    @foreach($peralatan as $i => $p)
-                        <tr row="{{ $i }}">
+                {{-- @foreach($pengalaman as $i => $p) --}}
+                    <tr row="{{-- {{ $i }} --}}">
 
-                            <td class="text-center">
-                                <input name="check[]" id="check" class="mx-auto my-auto p-0" type="checkbox">
-                            </td>
-                            <td>{{ $p->nama_alat }}</td>
-                            <td class="text-center" width="50">{{ $p->jumlah }}</td>
-                            <td>{{ $p->lokasi_sekarang }}</td>
-                            <td>{{ $p->bukti_kepemilikan }}</td>
-                            <td>{{ $p->keterangan }}</td>
-                            <td>
-                                <button class="btn btn-xs bg-gradient-primary text-white" id="edit" data-id="{{ $i }}">edit</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endisset
+                        <td class="text-center">
+                            <input name="check[]" id="check" class="mx-auto my-auto p-0" type="checkbox">
+                        </td>
+                        <td>{{-- {{ $p->nama_alat }} --}}</td>
+                        <td class="text-center" width="50">{{-- {{ $p->jumlah }} --}}</td>
+                        <td>{{-- {{ $p->lokasi_sekarang }} --}}</td>
+                        <td>{{-- {{ $p->bukti_kepemilikan }} --}}</td>
+                        <td>{{-- {{ $p->keterangan }} --}}</td>
+                        <td>
+                            <button class="btn btn-xs bg-gradient-primary text-white" id="edit" data-id="{{-- {{ $i }} --}}">edit</button>
+                        </td>
+                    </tr>
+                {{-- @endforeach --}}
             </tbody>
             <tfoot class="bg-gradient-primary text-white fw-800">
                 <tr>
@@ -153,7 +151,7 @@
         $('.form-peralatan').fadeOut()
     })
 
-    $('#form').on('change paste click', 'input, select, textarea', function(e){
+    $('#form').on('keyup change paste', 'input, select, textarea', function(e){
         var form = $('#form');
         var table = $('#example')
         var id = parseInt(form.attr('data-id'));

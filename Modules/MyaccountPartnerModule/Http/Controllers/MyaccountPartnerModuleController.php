@@ -24,7 +24,6 @@ class MyaccountPartnerModuleController extends Controller
     }
 
     public function get_pages(Request $request){
-
         switch ($request->pages) {
             case 'identitas':
                 $data = [
@@ -40,9 +39,7 @@ class MyaccountPartnerModuleController extends Controller
                 break;
             
             case 'akta':
-                $data = [ 
-                    'akta' => MyAccounts::get_akta() 
-                ];
+                $data['akta'] = MyAccounts::get_akta();
                 return view('myaccountpartnermodule::pages.akta', $data);
                 break;
             
@@ -51,25 +48,23 @@ class MyaccountPartnerModuleController extends Controller
                 break;
             
             case 'tenaga-ahli':
-                return view('myaccountpartnermodule::pages.tenaga-ahli');
+                $data['tenaga_ahli'] = MyAccounts::get_tenaga_ahli();
+                return view('myaccountpartnermodule::pages.tenaga_ahli', $data);
                 break;
             
             case 'pemilik':
-                $data = [ 
-                    'pemilik' => MyAccounts::get_pemilik() 
-                ];
+                $data['pemilik'] = MyAccounts::get_pemilik();
                 return view('myaccountpartnermodule::pages.pemilik', $data);
                 break;
 
             case 'peralatan':
-                $data = [
-                    'peralatan' => MyAccounts::get_peralatan()
-                ];
+                $data['peralatan'] = MyAccounts::get_peralatan();
                 return view('myaccountpartnermodule::pages.peralatan', $data);
                 break;
 
             case 'pengalaman':
-                return view('myaccountpartnermodule::pages.pengalaman');
+                $data['pengalaman'] = MyAccounts::get_pengalaman();
+                return view('myaccountpartnermodule::pages.pengalaman', $data);
                 break;
 
             case 'pajak':
@@ -99,6 +94,23 @@ class MyaccountPartnerModuleController extends Controller
 
     public  function set_peralatan(Request $request) {
         return MyAccounts::set_peralatan($request);
+    }
+    public  function update_peralatan(Request $request) {
+        return MyAccounts::edit_peralatan($request);
+    }
+
+    public  function set_pengalaman(Request $request) {
+        return MyAccounts::set_pengalaman($request);
+    }
+    public  function update_pengalaman(Request $request) {
+        return MyAccounts::edit_pengalaman($request);
+    }
+
+    public  function set_tenaga_ahli(Request $request) {
+        return MyAccounts::set_tenaga_ahli($request);
+    }
+    public  function update_tenaga_ahli(Request $request) {
+        return MyAccounts::edit_tenaga_ahli($request);
     }
 
 }

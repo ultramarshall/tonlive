@@ -82,6 +82,7 @@ class Myaccount extends Model
 		return json_decode($akta->peralatan);
 	}
 	public static function set_peralatan($data) {
+
 		$assets = [];
 		$old_data = json_decode($data->old_data);
 		if ( $old_data != null ){
@@ -103,4 +104,84 @@ class Myaccount extends Model
         array_push($assets, (object)$new_asset);
         return DB::table('user_vendor')->where('id', User::info('id'))->update(['peralatan'=>json_encode($assets)]);
 	}
+	public static function edit_peralatan($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['peralatan'=>json_encode($assets)]);
+	}
+
+	public static function get_pengalaman() {
+		$result = DB::table('user_vendor')->where('id', User::info('id'))->first(['pengalaman']);
+		return json_decode($result->pengalaman);
+	}
+	public static function set_pengalaman($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+		$new_asset = [
+			"pekerjaan" => $data->pekerjaan,
+			"lokasi" => $data->lokasi,
+			"instansi" => $data->instansi,
+			"alamat" => $data->alamat,
+			"tanggal_kontrak" => $data->tanggal_kontrak,
+			"selesai_kontrak" => $data->selesai_kontrak,
+			"nilai_kontrak" => $data->nilai_kontrak,
+			"jenis_kontrak" => $data->jenis_kontrak
+        ];
+        array_push($assets, (object)$new_asset);
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['pengalaman'=>json_encode($assets)]);
+	}
+	public static function edit_pengalaman($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['pengalaman'=>json_encode($assets)]);
+	}
+
+	public static function get_tenaga_ahli() {
+		$result = DB::table('user_vendor')->where('id', User::info('id'))->first(['tenaga_ahli']);
+		return json_decode($result->tenaga_ahli);
+	}
+	public static function set_tenaga_ahli($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+		$new_asset = [
+			"nama" => $data->nama,
+			"tgl_lahir" => $data->tgl_lahir,
+			"pendidikan" => $data->pendidikan,
+			"pengalaman" => $data->pengalaman,
+			"keahlian" => $data->keahlian,
+        ];
+        array_push($assets, (object)$new_asset);
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['tenaga_ahli'=>json_encode($assets)]);
+	}
+	public static function edit_tenaga_ahli($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['tenaga_ahli'=>json_encode($assets)]);
+	}
+
 }

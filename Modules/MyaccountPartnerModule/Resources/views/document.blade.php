@@ -209,11 +209,9 @@
 
     });
 
-    $(document).on('submit', '#form', function(e){
-        e.preventDefault();
-        
-        var url = e.currentTarget.action;
-        var data = $(this).serializeArray();
+    $(document).on('click', '#btn-save', function(){
+        var url = $('#form').attr('action');
+        var data = $('#form').serializeArray();
         $.ajax({
             type: 'POST',
             url: url,
@@ -234,15 +232,19 @@
                 });
             },
             success: function(response) {
-                console.log(response)
-                $('.nav-link.active').trigger('click')
+                // $('.nav-link.active').trigger('click')
                 if (response)
                     $('#tab-view').unblock()
+                console.log(data)
             },
             error: function(response) {
                 console.log(response)
             }
         });
+    })
+    $(document).on('submit', '#form', function(e){
+        e.preventDefault();
+        return false;
     });
     function get_view(pages) {
         pages = (pages=='undefined')?'identitas':pages;

@@ -21,5 +21,12 @@ Route::prefix('/partner')->group(function() {
 	    Route::post('/save-akta', 'MyaccountPartnerModuleController@set_akta');
 	    Route::post('/save-pemilik', 'MyaccountPartnerModuleController@set_pemilik');
 	    Route::post('/save-peralatan', 'MyaccountPartnerModuleController@set_peralatan');
+	    Route::post('/update-peralatan', 'MyaccountPartnerModuleController@update_peralatan');
+	    
+	    Route::post('/save-pengalaman', 'MyaccountPartnerModuleController@set_pengalaman');
+	    Route::post('/update-pengalaman', 'MyaccountPartnerModuleController@update_pengalaman');
+
+	    Route::post('/save-tenaga-ahli', 'MyaccountPartnerModuleController@set_tenaga_ahli');
+	    Route::post('/update-tenaga-ahli', 'MyaccountPartnerModuleController@update_tenaga_ahli');
 	});
 });
