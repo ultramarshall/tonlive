@@ -44,7 +44,8 @@ class MyaccountPartnerModuleController extends Controller
                 break;
             
             case 'pengurus':
-                return view('myaccountpartnermodule::pages.pengurus');
+                $data['pengurus'] = MyAccounts::get_pengurus();
+                return view('myaccountpartnermodule::pages.pengurus', $data);
                 break;
             
             case 'tenaga-ahli':
@@ -111,6 +112,13 @@ class MyaccountPartnerModuleController extends Controller
     }
     public  function update_tenaga_ahli(Request $request) {
         return MyAccounts::edit_tenaga_ahli($request);
+    }
+
+    public  function set_pengurus(Request $request) {
+        return MyAccounts::set_pengurus($request);
+    }
+    public  function update_pengurus(Request $request) {
+        return MyAccounts::edit_pengurus($request);
     }
 
 }

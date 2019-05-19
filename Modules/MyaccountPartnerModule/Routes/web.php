@@ -28,5 +28,8 @@ Route::prefix('/partner')->group(function() {
 
 	    Route::post('/save-tenaga-ahli', 'MyaccountPartnerModuleController@set_tenaga_ahli');
 	    Route::post('/update-tenaga-ahli', 'MyaccountPartnerModuleController@update_tenaga_ahli');
+
+	    Route::post('/save-pengurus', 'MyaccountPartnerModuleController@set_pengurus');
+	    Route::post('/update-pengurus', 'MyaccountPartnerModuleController@update_pengurus');
 	});
 });

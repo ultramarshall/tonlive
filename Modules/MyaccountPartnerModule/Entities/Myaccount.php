@@ -184,4 +184,38 @@ class Myaccount extends Model
         return DB::table('user_vendor')->where('id', User::info('id'))->update(['tenaga_ahli'=>json_encode($assets)]);
 	}
 
+	public static function get_pengurus() {
+		$result = DB::table('user_vendor')->where('id', User::info('id'))->first(['pengurus']);
+		return json_decode($result->pengurus);
+	}
+	public static function set_pengurus($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+		$new_asset = [
+			"nama" => $data->nama,
+			"no_ktp" => $data->no_ktp,
+			"alamat" => $data->alamat,
+			"jabatan" => $data->jabatan,
+			"mulai" => $data->mulai,
+			"sampai" => $data->sampai
+        ];
+        array_push($assets, (object)$new_asset);
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['pengurus'=>json_encode($assets)]);
+	}
+	public static function edit_pengurus($data) {
+		$assets = [];
+		$old_data = json_decode($data->old_data);
+		if ( $old_data != null ){
+			foreach ($old_data as $i => $od) {
+				array_push($assets, $od);
+			}
+		}
+        return DB::table('user_vendor')->where('id', User::info('id'))->update(['pengurus'=>json_encode($assets)]);
+	}
+
 }
