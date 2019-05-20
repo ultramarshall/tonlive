@@ -18,7 +18,47 @@
             <div class="form-group row">
                 <label class="text-right col-3 float-left">Dokumen</label>
                 {{-- <input type="text" class="form-control form-control-sm col-6 float-left" name="acta_document" id="acta_document" value="{{ $akta->acta_document }}"> --}}
-                <input type="file" name="acta_document" id="acta_document">
+                <input type="file" name="acta_document[]" id="acta_document" style="outline: none" class="form-control form-control-sm col-6 float-left">
+                {{-- <input type="file" name="acta_document[]" id="acta_document"> --}}
+                {{-- <div class="col-6 float-left border py-2">
+                    <style>
+                        [type=file] { outline: none }
+                        [type=file]:before {
+                            content: 'choose file...';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            text-align: center;
+                            color: #fff;
+                            font-weight: bold;
+                            height: 100%;
+                            width: 100%;
+                            background-color: #a1daf4;
+                            border-color: 1px solid;
+                            line-height: 30px;
+                            cursor: pointer;
+                            transition: .4s background-color ease-in-out;
+                            border-radius: 2px;
+                        }
+                        [type=file]:hover::before {
+                            background-color: #008ED0;
+                        }
+
+                    </style>
+                    <div class="col-12 mb-1">
+                        <input type="file" name="acta_document[]">
+                    </div>
+                    <div class="col-12 mb-1">
+                        <input type="file" name="acta_document[]">
+                    </div>
+                    <div class="col-12 mb-1">
+                        <input type="file" name="acta_document[]">
+                    </div>
+                    <div class="col-12 mb-1">
+                        <input type="file" name="acta_document[]">
+                    </div>
+                    <button class="btn btn-xs bg-gradient-primary col-12 text-white add-file">add more</button>
+                </div> --}}
             </div>
         </form>
     </div>

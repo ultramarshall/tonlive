@@ -37,7 +37,8 @@ class EporcDetailController extends Controller
                 return view('eporcmodule::pages.diskusi', $data);
                 break;
             case 'jadwal':
-                return view('eporcmodule::pages.jadwal');
+                $data = ['jadwal' => Eprocs::get_schedule($id)];
+                return view('eporcmodule::pages.jadwal', $data);
                 break;
             
      

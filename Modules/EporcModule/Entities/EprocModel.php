@@ -60,6 +60,13 @@ class EprocModel extends Model
                 ]);
     }
 
+    public static function get_schedule($id) {
+        return DB::table('schedule')
+                ->where('planning_id', $id)
+                ->orderBy('date_schedule', 'asc')
+                ->get();
+    }
+
 	public static function peserta_tender($id) {
 		return DB::table('merging_vendor_project as a')
                 ->join('user_vendor as b', 'a.user_vendor_id', '=', 'b.id')
